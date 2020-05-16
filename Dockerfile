@@ -1,1 +1,0 @@
-FROM jaymoulin/transmission

@@ -3,9 +3,7 @@ version: "3"
 services:
   transmission:
     container_name: transmission
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: jaymoulin/transmission
     ports:
       - "9091:80"
       - "51413:51413/tcp"
@@ -13,6 +11,6 @@ services:
     environment:
       PORT: 80
     volumes:
-      - ./watch:/to_download
-      - ./downloads:/output
+      - ${WATCH_DIR}:/to_download
+      - ${DOWNLOAD_DIR}:/output
     restart: unless-stopped
