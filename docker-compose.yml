@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  transmission:
+    container_name: transmission
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9091:80"
+      - "51413:51413/tcp"
+      - "51413:51413/udp"
+    environment:
+      PORT: 80
+    volumes:
+      - ./watch:/to_download
+      - ./downloads:/output
+    restart: unless-stopped
