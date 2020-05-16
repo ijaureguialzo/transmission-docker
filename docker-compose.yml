@@ -13,4 +13,8 @@ services:
     volumes:
       - ${WATCH_DIR}:/to_download
       - ${DOWNLOAD_DIR}:/output
+      - config:/config
     restart: unless-stopped
+
+volumes:
+  config:
