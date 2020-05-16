@@ -29,5 +29,5 @@ clean:
 
 password:
 	@read -p "Username: " username; \
-	read -sp "Password: " password; \
+	read -p "Password: " password; \
 	docker-compose exec transmission configure "$$username" "$$password";
