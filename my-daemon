@@ -5,7 +5,16 @@ set -x
 trap 'kill -TERM $PID' TERM INT
 
 if [ "$#" -eq 0 ]; then
-  transmission-daemon -c /watch -w /media -f -t -a *.*.*.* -p "$PORT" -g /config &
+  transmission-daemon \
+    --watch-dir /watch \
+    --download-dir /media \
+    --incomplete-dir /media/.incoming \
+    --foreground \
+    --no-auth \
+    --allowed *.*.*.* \
+    --port "$PORT" \
+    --portmap \
+    --config-dir /config &
 else
   transmission-daemon $@ &
 fi

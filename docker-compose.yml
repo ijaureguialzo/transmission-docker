@@ -1,4 +1,4 @@
-version: "3"
+version: "3.4"
 
 services:
   transmission:
@@ -6,12 +6,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "9091:80"
-      - "51413:51413/tcp"
-      - "51413:51413/udp"
+    network_mode: host
     environment:
-      PORT: 80
+      PORT: 9091
     volumes:
       - ${WATCH_DIR}:/watch
       - ${DOWNLOAD_DIR}:/media
