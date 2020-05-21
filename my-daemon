@@ -8,7 +8,6 @@ if [ "$#" -eq 0 ]; then
   transmission-daemon \
     --watch-dir /watch \
     --download-dir /media \
-    --incomplete-dir /media/.incoming \
     --foreground \
     --no-auth \
     --allowed *.*.*.* \
