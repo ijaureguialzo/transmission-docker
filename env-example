@@ -1,2 +1,4 @@
 WATCH_DIR=./watch
 DOWNLOAD_DIR=./downloads
+RESUME_DIR=./resume
+TORRENTS_DIR=./torrents
