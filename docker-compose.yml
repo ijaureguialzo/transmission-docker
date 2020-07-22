@@ -33,6 +33,7 @@ services:
     network_mode: host
     depends_on:
       - transmission
+    restart: unless-stopped
 
 volumes:
   config:
