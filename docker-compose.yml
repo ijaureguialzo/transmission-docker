@@ -26,7 +26,7 @@ services:
         - ARCH=armhf
     image: https-portal:armhf-master
     environment:
-      DOMAINS: ${USER}:${PASSWORD}@${DOMAIN} -> http://127.0.0.1:9091
+      DOMAINS: ${HTTPS_PORTAL_USER}:${HTTPS_PORTAL_PASSWORD}@${DOMAIN} -> http://127.0.0.1:9091
       #STAGE: production
     volumes:
       - https-portal_certs:/var/lib/https-portal

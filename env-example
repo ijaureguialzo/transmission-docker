@@ -3,6 +3,6 @@ DOWNLOAD_DIR=./downloads
 RESUME_DIR=./resume
 TORRENTS_DIR=./torrents
 
-USER=changeme
-PASSWORD=12345Abcde
+HTTPS_PORTAL_USER=changeme
+HTTPS_PORTAL_PASSWORD=12345Abcde
 DOMAIN=transmission.example.com
