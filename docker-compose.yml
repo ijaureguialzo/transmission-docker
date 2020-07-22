@@ -17,5 +17,24 @@ services:
       - config:/config
     restart: unless-stopped
 
+  https-portal:
+    container_name: https-portal
+    build:
+      context: https://github.com/SteveLTN/https-portal.git
+      args:
+        - DIST=arm32v7/nginx:1.17.3
+        - ARCH=armhf
+    image: https-portal:armhf-master
+    environment:
+      DOMAINS: >
+        ${USER}:${PASSWORD}@${DOMAIN} -> http://transmission:9091
+      #STAGE: production
+    volumes:
+      - https-portal_certs:/var/lib/https-portal
+    ports:
+      - 80:80
+      - 443:443
+
 volumes:
   config:
+  https-portal_certs:
