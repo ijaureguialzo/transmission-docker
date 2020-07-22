@@ -31,6 +31,8 @@ services:
     volumes:
       - https-portal_certs:/var/lib/https-portal
     network_mode: host
+    depends_on:
+      - transmission
 
 volumes:
   config:
