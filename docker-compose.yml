@@ -28,7 +28,7 @@ services:
     image: https-portal:armhf-master
     environment:
       DOMAINS: ${HTTPS_PORTAL_USER}:${HTTPS_PORTAL_PASSWORD}@${DOMAIN} -> http://127.0.0.1:9091
-      #STAGE: production
+      STAGE: ${HTTPS_PORTAL_STAGE}
     volumes:
       - https-portal_certs:/var/lib/https-portal
     network_mode: host
