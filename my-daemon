@@ -7,7 +7,7 @@ trap 'kill -TERM $PID' TERM INT
 if [ "$#" -eq 0 ]; then
   transmission-daemon \
     --watch-dir /watch \
-    --download-dir /media \
+    --download-dir "${DOWNLOAD_PATH}" \
     --foreground \
     --no-auth \
     --allowed *.*.*.* \

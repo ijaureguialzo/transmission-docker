@@ -9,9 +9,10 @@ services:
     network_mode: host
     environment:
       PORT: 9091
+      DOWNLOAD_PATH: ${DOWNLOAD_PATH}
     volumes:
+      - ${MEDIA_DIR}:/media
       - ${WATCH_DIR}:/watch
-      - ${DOWNLOAD_DIR}:/media
       - ${RESUME_DIR}:/config/resume
       - ${TORRENTS_DIR}:/config/torrents
       - config:/config
