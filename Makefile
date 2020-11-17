@@ -40,4 +40,4 @@ stats:
 	@docker stats
 
 clean:
-	@docker-compose down -v
+	@docker-compose down -v --rmi all
