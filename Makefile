@@ -2,7 +2,7 @@ help:
 	@echo 'Opciones:'
 	@echo ''
 	@echo 'start | stop | restart | stop-all'
-	@echo 'password'
+	@echo 'password | rpc-host'
 	@echo 'workspace'
 	@echo 'update'
 	@echo 'logs'
@@ -24,6 +24,9 @@ password:
 	@read -p "Username: " username; \
 	read -p "Password: " password; \
 	docker-compose exec transmission configure "$$username" "$$password";
+
+rpc-host:
+	@docker-compose exec transmission rpc-host
 
 workspace:
 	@docker-compose exec transmission /bin/sh
