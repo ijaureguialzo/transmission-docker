@@ -20,12 +20,7 @@ services:
 
   https-portal:
     container_name: https-portal
-    build:
-      context: https://github.com/SteveLTN/https-portal.git
-      args:
-        - DIST=arm32v7/nginx:1.17.3
-        - ARCH=armhf
-    image: https-portal:armhf-master
+    image: steveltn/https-portal:1
     environment:
       DOMAINS: ${HTTPS_PORTAL_USER}:${HTTPS_PORTAL_PASSWORD}@${DOMAIN} -> http://127.0.0.1:9091
       STAGE: ${HTTPS_PORTAL_STAGE}
