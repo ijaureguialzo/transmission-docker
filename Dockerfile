@@ -1,4 +1,6 @@
-FROM jaymoulin/transmission:3.00
+ARG VERSION
+
+FROM jaymoulin/transmission:${VERSION}
 
 COPY my-daemon /usr/bin/my-daemon
 RUN chmod +x /usr/bin/my-daemon
