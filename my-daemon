@@ -5,15 +5,7 @@ set -x
 trap 'kill -TERM $PID' TERM INT
 
 if [ "$#" -eq 0 ]; then
-  transmission-daemon \
-    --watch-dir /watch \
-    --download-dir "${DOWNLOAD_PATH}" \
-    --foreground \
-    --no-auth \
-    --allowed *.*.*.* \
-    --port "$PORT" \
-    --portmap \
-    --config-dir /config &
+  transmission-daemon --watch-dir /watch --download-dir "$DOWNLOAD_PATH" --foreground --no-auth --allowed *.*.*.* --port "$PORT" --portmap --config-dir /config &
 else
   transmission-daemon $@ &
 fi
