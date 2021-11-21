@@ -9,6 +9,7 @@ services:
       args:
         - VERSION=${VERSION}
     network_mode: host
+    privileged: true
     environment:
       PORT: 9091
       DOWNLOAD_PATH: ${DOWNLOAD_PATH}
