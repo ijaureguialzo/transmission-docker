@@ -33,6 +33,10 @@ services:
     depends_on:
       - transmission
     restart: unless-stopped
+    logging:
+      options:
+        max-size: "1m"
+        max-file: "3"
 
 volumes:
   config:
