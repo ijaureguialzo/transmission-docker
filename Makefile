@@ -1,46 +1,50 @@
-help:
-	@echo 'Opciones:'
-	@echo ''
-	@echo 'start | stop | restart | stop-all'
-	@echo 'password | rpc-host-config'
-	@echo 'workspace'
-	@echo 'update'
-	@echo 'logs'
-	@echo 'stats'
-	@echo 'clean'
+#!make
+
+ifneq (,$(wildcard ./.env))
+    include .env
+    export
+else
+$(error No se encuentra el fichero .env)
+endif
+
+help: _header
+	${info }
+	@echo Opciones:
+	@echo ---------------------------------
+	@echo start / stop / restart / stop-all
+	@echo workspace
+	@echo update
+	@echo logs / stats
+	@echo clean
+	@echo ---------------------------------
+
+_header:
+	@echo ------------
+	@echo Transmission
+	@echo ------------
 
 start:
-	@docker-compose up -d --remove-orphans
+	@docker compose up -d --remove-orphans
 
 stop:
-	@docker-compose stop
+	@docker compose stop
 
 restart: stop start
 
 stop-all:
 	@docker stop `docker ps -aq`
 
-password:
-	@read -p "Username: " username; \
-	read -p "Password: " password; \
-	docker-compose exec transmission configure "$$username" "$$password";
-
-rpc-host-config:
-	@docker-compose exec transmission rpc-host
-
 workspace:
-	@docker-compose exec transmission /bin/sh
+	@docker compose exec transmission /bin/sh
 
-_build:
-	@docker-compose build --pull
-
-update: _build start
+update:
+	@docker compose pull
 
 logs:
-	@docker-compose logs
+	@docker compose logs
 
 stats:
 	@docker stats
 
 clean:
-	@docker-compose down -v --rmi all
+	@docker compose down -v --rmi all
