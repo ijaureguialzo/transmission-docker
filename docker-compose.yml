@@ -1,31 +1,29 @@
-version: "3.4"
-
 services:
   transmission:
     container_name: transmission
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        - VERSION=${VERSION}
+    image: linuxserver/transmission:${VERSION}
     network_mode: host
     privileged: true
     environment:
-      PORT: 9091
-      DOWNLOAD_PATH: ${DOWNLOAD_PATH}
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
     volumes:
-      - ${MEDIA_DIR}:/media
+      - ${CONFIG_DIR}:/config
+      - ${DOWNLOADS_DIR}:/downloads
       - ${WATCH_DIR}:/watch
-      - ${RESUME_DIR}:/config/resume
-      - ${TORRENTS_DIR}:/config/torrents
-      - config:/config
     restart: unless-stopped
 
   https-portal:
     container_name: https-portal
     image: steveltn/https-portal:1
     environment:
-      DOMAINS: ${HTTPS_PORTAL_USER}:${HTTPS_PORTAL_PASSWORD}@${DOMAIN} -> http://127.0.0.1:9091
+      DOMAINS: >
+        ${HTTPS_PORTAL_USER}:${HTTPS_PORTAL_PASSWORD}@${DOMAIN} -> http://127.0.0.1:9091,
+        ${EXTRA_SITES}
+      CLIENT_MAX_BODY_SIZE: 1024M
+      CUSTOM_NGINX_SERVER_CONFIG_BLOCK: |
+        add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always;
       STAGE: ${HTTPS_PORTAL_STAGE}
     volumes:
       - https-portal_certs:/var/lib/https-portal

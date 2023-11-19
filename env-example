@@ -1,13 +1,16 @@
-VERSION=3.00-1.6.1
+VERSION=latest
 
-MEDIA_DIR=./media
-WATCH_DIR=./media/watch
-RESUME_DIR=./media/resume
-TORRENTS_DIR=./media/torrents
+CONFIG_DIR=./config
+DOWNLOADS_DIR=./downloads
+WATCH_DIR=./watch
 
-DOWNLOAD_PATH=/media/downloads
+PUID=1000
+PGID=1000
+TZ=Europe/Madrid
 
 HTTPS_PORTAL_STAGE=local    # local | production
 HTTPS_PORTAL_USER=changeme
 HTTPS_PORTAL_PASSWORD=12345Abcde
 DOMAIN=transmission.example.com
+
+EXTRA_SITES=
