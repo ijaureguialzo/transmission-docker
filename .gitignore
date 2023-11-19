@@ -81,3 +81,5 @@ downloads/
 watch/
 
 .env
+
+docker-compose.override.yml
