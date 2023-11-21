@@ -37,10 +37,8 @@ stop-all:
 workspace:
 	@docker compose exec transmission /bin/sh
 
-_pull:
+update:
 	@docker compose pull
-
-update: _pull start
 
 logs:
 	@docker compose logs
