@@ -17,6 +17,7 @@ services:
   https-portal:
     container_name: https-portal
     image: steveltn/https-portal:1
+    stop_signal: SIGINT
     environment:
       DOMAINS: >
         ${HTTPS_PORTAL_USER}:${HTTPS_PORTAL_PASSWORD}@${DOMAIN} -> http://127.0.0.1:9091,
