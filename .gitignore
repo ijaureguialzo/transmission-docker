@@ -83,3 +83,6 @@ watch/
 .env
 
 docker-compose.override.yml
+
+config/
+media/
