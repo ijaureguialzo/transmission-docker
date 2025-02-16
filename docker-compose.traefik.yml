@@ -1,9 +1,5 @@
 services:
   transmission:
-    network_mode: !reset [ ]
-    privileged: false
-    expose:
-      - 9091
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.transmission.rule=Host(`${DOMAIN:-transmission.test}`)"
