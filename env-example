@@ -14,3 +14,5 @@ HTTPS_PORTAL_PASSWORD=12345Abcde
 DOMAIN=transmission.example.com
 
 EXTRA_SITES=
+
+TRAEFIK_AUTH=changeme:$$2y$$05$$tKn.CJ9kxadgoqszWLPW3uEAbaWEn2BKvqj4UxxGq4Mbsk5p5o1eW

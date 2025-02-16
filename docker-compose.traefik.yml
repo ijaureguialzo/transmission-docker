@@ -1,0 +1,19 @@
+services:
+  transmission:
+    network_mode: !reset [ ]
+    privileged: false
+    expose:
+      - 9091
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.transmission.rule=Host(`${DOMAIN:-transmission.test}`)"
+      - "traefik.http.routers.transmission.entrypoints=websecure"
+      - "traefik.http.routers.transmission.tls=true"
+      - "traefik.http.services.transmission.loadbalancer.server.port=9091"
+      - "traefik.http.routers.transmission.middlewares=transmission-auth"
+      - "traefik.http.middlewares.transmission-auth.basicauth.users=${TRAEFIK_AUTH:-changeme:$$2y$$05$$tKn.CJ9kxadgoqszWLPW3uEAbaWEn2BKvqj4UxxGq4Mbsk5p5o1eW}"
+
+networks:
+  default:
+    name: ${NETWORK_NAME:-traefik-network}
+    external: true
