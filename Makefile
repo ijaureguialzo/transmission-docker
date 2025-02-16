@@ -14,6 +14,7 @@ help: _header
 	@echo start / stop / restart / stop-all
 	@echo start-traefik
 	@echo workspace
+	@echo password
 	@echo update
 	@echo logs / stats
 	@echo clean
@@ -40,6 +41,9 @@ stop-all:
 
 workspace:
 	@docker compose exec transmission /bin/sh
+
+password:
+	@echo $$(htpasswd -nB username) | sed -e s/\\$$/\\$$\\$$/g
 
 update:
 	@docker compose pull
