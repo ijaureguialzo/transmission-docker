@@ -2,10 +2,12 @@ services:
   transmission:
     labels:
       - "traefik.enable=true"
+      - "traefik.passHostHeader=true"
       - "traefik.http.routers.transmission.rule=Host(`${DOMAIN:-transmission.test}`)"
       - "traefik.http.routers.transmission.entrypoints=websecure"
       - "traefik.http.routers.transmission.tls=true"
       - "traefik.http.services.transmission.loadbalancer.server.port=9091"
+      - "traefik.http.services.transmission.loadbalancer.server.scheme=http"
       - "traefik.http.routers.transmission.middlewares=transmission-auth"
       - "traefik.http.middlewares.transmission-auth.basicauth.users=${TRAEFIK_AUTH:-changeme:$$2y$$05$$tKn.CJ9kxadgoqszWLPW3uEAbaWEn2BKvqj4UxxGq4Mbsk5p5o1eW}"
 
